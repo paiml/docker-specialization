@@ -1,0 +1,12 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  gate:
+    name: gate
+    runs-on: [self-hosted, clean-room, X64, intel]
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/leak-check.sh
